@@ -1,40 +1,26 @@
+const pc = document.querySelector('#parts-container');
+
+function addPart(text,href){
+	const a = document.createElement('a')
+	a.setAttribute("href", href);
+	const div = document.createElement('div')
+	div.setAttribute("class","part");
+	div.textContent = text;
+	a.appendChild(div);
+	pc.appendChild(a);
+}
 
 (async function init() {
 	try {
-		let msg = { 'cmd': 'get-url' };
-		const tmp = await browser.runtime.sendMessage(msg);
-		const url = new URL(tmp); 
-		const origin = url.origin;
-		const pathname = url.pathname;
-		let paths = pathname.split('/');
-		let html = '';
-		html += '<ul>';
-		while (paths.length > 0) {
-			//html += '<div class="part"><a class="blub" href="#" url="' + sub_url + '">' + paths[paths.length -1] + '</a></div>';
-			if(paths.join('/') !== '' && paths[paths.length -1] !== '') {
-				sub_url = origin + "/" + paths.join('/');
-				html += '<div class="part"><a class="blub" href="' + sub_url + '">' + paths[paths.length -1] + '</a></div>';
+		const url = new URL(await browser.runtime.sendMessage('url'));
+		let parts = url.pathname.split('/');
+		while (parts.length > 0) {
+			if(parts.join('/') !== '' && parts[parts.length -1] !== '') {
+				addPart(parts[parts.length-1], url.origin + parts.join('/'));
 			}
-			paths.pop();
+			parts.pop();
 		}
-		html += '<div class="part"><a class="blub" href="' + origin + '">' + origin + '</a></div>';
-		html += '</ul>';
-		const pc = document.querySelector('#parts-container');
-		pc.innerHTML = html;
-
-		/*
-		document.querySelectorAll('.blub').forEach( a => {
-
-			a.onclick = function(e) {
-				e.preventDefault();
-				//console.log('blub clicked', this.getAttribute("url"));
-				let msg = { 'cmd': 'set-url', 'url': this.getAttribute("url") };
-				browser.runtime.sendMessage(msg);
-				return false;
-			}
-		});
-		*/
-
+		addPart('/', url.origin);
 	}catch(e) {
 		console.error(e.toString());
 	}

@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>popup</title>
+		<title></title>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<style>
-	body {
-		padding-right:15px;
-		margin:0px;
-		text-align:right;
-	}
-	.part {
-		padding: 5px;
-		border: 3px groove;
-	}
-</style>
+	<style>
+		body {
+			min-width:150px;
+			padding:5px;
+			margin:0;
+			background-color: gray;
+		}
+		.part {
+			background-color: lightgray;
+			margin:3px;
+			padding:5px;
+			border: 1px solid gray;
+			border-radius:10px;
+		}
+		.part:hover {
+			background-color: lightgreen;
+		}
+	</style>
 	</head>
 	<body>
-		<div id="parts-container">
-		</div>
+		<div id="parts-container"></div>
 		<script src="popup.js"></script>
 	</body>
 </html>
