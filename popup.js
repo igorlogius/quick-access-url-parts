@@ -1,3 +1,4 @@
+/* global browser */
 const pc = document.querySelector('#parts-container');
 
 function addPart(text,href){
