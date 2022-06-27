@@ -6,11 +6,11 @@
   "page_action": {
 	"default_title": "Quick Access URL Parts",
 	"default_popup": "popup.html",
-	"default_icon": "icon.png",
+	"default_icon": "icon.svg",
 	"show_matches": ["<all_urls>"]
   },
   "icons": {
-	  "128": "icon.png"
+	  "128": "icon.svg"
   },
   "description": "",
   "manifest_version": 2,
@@ -18,5 +18,5 @@
   "permissions": [
     "activeTab"
   ],
-  "version": "1.0.3"
+  "version": "1.1.3"
 }
