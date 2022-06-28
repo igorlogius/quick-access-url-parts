@@ -1,4 +1,5 @@
 /* global browser */
+
 const pc = document.querySelector('#parts-container');
 
 function addPart(text,href){
@@ -26,5 +27,4 @@ function addPart(text,href){
 		console.error(e.toString());
 	}
 }());
-
 
